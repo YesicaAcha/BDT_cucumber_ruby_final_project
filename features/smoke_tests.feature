@@ -1,13 +1,22 @@
-@api_test @smoke
-Feature: Smoke Test API
+# Author: Yesica Acha
 
-Scenario Outline: test
+@api_test @smoke
+Feature: Smoke Test for todo.ly REST API for endpoints:
+	* /user.json
+	* /projects.json 
+	* /items.json    
+	* /filters.json
+	Validates the correct status code is returned
+
+Scenario Outline: Smoke tests for todo.ly REST API 
+
 Given I have set a connection to application
 When I send a GET request to <endpoint>
-Then I expect HTTP code 200
+Then the HTTP status code should be 200
+
 Examples: 
 | endpoint       |
 | /user.json     |
 | /projects.json |
-| /filters.json  |
 | /items.json    |
+| /filters.json  |
