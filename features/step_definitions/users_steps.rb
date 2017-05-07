@@ -11,7 +11,7 @@ When (/^I send a (PUT|POST) request to (.*?) with json$/) do |method, end_point,
   @last_json = @http_response.body
 end
 
-When (/^I send a (GET) request to (.*?)$/) do |method, end_point|
+When (/^I send a (GET|DELETE) request to (.*?)$/) do |method, end_point|
   http_request = Rest_service.get_request(method, end_point)
   @http_response = Rest_service.execute_request(@http_connection, http_request)
   @last_json = @http_response.body
