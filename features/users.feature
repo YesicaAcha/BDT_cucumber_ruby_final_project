@@ -1,34 +1,34 @@
+# Author: Yesica Acha
+
 @api_test
 Feature: Test API create user
 
-Scenario: Validate invalid email
-
+Scenario: Validates create user with invalid email
 Given I have set a connection to application
 When I send a POST request to /user.json with json
-"""
+  """
     {
   		"UserObject": {
     		"Email": "use123r@email.com",
     		"FullName": "Joe Blow",
     		"Password": "pASswoRd"
-	 	}
-	}
-"""
+	 	  }
+	  }
+  """
+Then the HTTP status code should be 200
+	And JSON should be equal to
+	  """
+  	  {
+  	    "ErrorMessage": "Invalid Email Address",
+  	    "ErrorCode": 307
+  	  }
+	  """ 
 
-Then I expect HTTP code 200
-	And I expect JSON equal to
-	      """
-	      {
-	       "ErrorMessage": "Invalid Email Address",
-	       "ErrorCode": 307
-	      }
-	      """ 
-
-Scenario: Get user
+Scenario: Validates get user
 Given I have set a connection to application
 When I send a GET request to /user.json
-Then I expect HTTP code 200
-    And I expect JSON equal to
+Then the HTTP status code should be 200
+    And JSON should be equal to
       """
       {
   	    "Id": 548715,

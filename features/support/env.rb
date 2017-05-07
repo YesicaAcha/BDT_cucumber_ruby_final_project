@@ -23,8 +23,10 @@ def load_app_config_file(filename)
 end
 
 AfterConfiguration do |config|
+  
   # read config file
   configuration = load_app_config_file('env.yml')
+  
   # Load application configuration parameters
   $app_user = configuration['app']['admin_user']
   $app_pass = configuration['app']['admin_pass']

@@ -5,7 +5,7 @@ module Rest_service
   HTTP_TIMEOUT_FOR_RESPONSE = 180
   
   #
-  # This method set up a connection 
+  # Sets up a connection 
   #
   def Rest_service.get_connection
       http_connection = nil
@@ -40,7 +40,7 @@ module Rest_service
 
   #
   # Executes the request
-  # Return que se creo para el http connection y http request
+  # Return http response
   #
   def Rest_service.execute_request(http_connection, http_request)
     http_response = http_connection.request(http_request)
