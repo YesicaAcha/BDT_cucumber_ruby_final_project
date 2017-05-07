@@ -1,2 +1,2 @@
 # BDT_cucumber_ruby_final_project
-Final project for the course API testing with cucumber and Ruby
+Repository for the final project for the course QE Training for BDT with cucumber and ruby
