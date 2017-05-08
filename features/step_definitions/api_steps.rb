@@ -37,10 +37,31 @@ Then (/^JSON should be equal to$/) do |json_text|
   expect(@last_json).to be_json_eql json_text
 end
 
-Then (/^JSON should include$/) do |json_text|
-  expect(@last_json).to include_json json_text
-end
+# Then (/^JSON should include$/) do |json_text|
+#   # expect(@last_json).to include_json(json_text).at_path(0)
+#   expect(@last_json).should include_json("""{ "Content":"item_name_UPDATED" }""").at_path(0)
+# end
 
 # Then(/^JSON should include "([^"]*)" equals to "([^"]*)"$/) do |key, value|
 #   expect(@last_json).to be_json_eql(%("Content")).at_path("item_name_UPDATED")
 # end
+
+Then(/^the JSON response at (.*?) should be (.*?) string value$/) do |key, expected_value|
+  actual_value = Json_Manager.getJSONvalue(@last_json, key)
+  expect(actual_value).to eq(expected_value)
+end
+
+Then(/^the JSON response at (.*?) should be (.*?) integer value$/) do |key, expected_value|
+  actual_value = Json_Manager.getJSONvalue(@last_json, key)
+  expect(actual_value).to eq(expected_value.to_i)
+end
+
+Then(/^the JSON response at (.*?) should be (.*?) boolean value$/) do |key, expected_value|
+  actual_value = Json_Manager.getJSONvalue(@last_json, key)
+  expect(actual_value).to eq(expected_value == "true" ? true : false)
+end
+
+Then(/^the JSON response at (.*?) should be nil value$/) do |key|
+  actual_value = Json_Manager.getJSONvalue(@last_json, key)
+  expect(actual_value).to eq(nil)
+end
