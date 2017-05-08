@@ -11,7 +11,7 @@ Feature: Smoke Test for todo.ly REST API for endpoints:
 Scenario Outline: Smoke tests for todo.ly REST API 
 
 Given I have set a connection to application
-When I send a GET request to <endpoint>
+When I send a GET request to "<endpoint>"
 Then the HTTP status code should be 200
 
 Examples: 

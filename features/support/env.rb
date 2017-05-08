@@ -22,6 +22,10 @@ def load_app_config_file(filename)
   return config
 end
 
+def last_json
+  @http_response.body
+end
+
 AfterConfiguration do |config|
   
   # read config file

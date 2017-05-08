@@ -4,11 +4,13 @@ Authors: Marilyn Moya
          Yesica Acha
 =end
 
+require_relative "entities/user"
+
 Given (/^I have set a connection to application$/) do
   @http_connection = Rest_service.get_connection
 end
 
-When (/^I send a (PUT|POST) request to (.*?) with json$/) do |method, end_point, json_text|
+When (/^I send a (PUT|POST) request to "(.*?)" with json$/) do |method, end_point, json_text|
   http_request = Rest_service.get_request(method, end_point)
   http_request['content-type'] = 'application/json'
   http_request['accept'] = 'application/json'
@@ -17,7 +19,7 @@ When (/^I send a (PUT|POST) request to (.*?) with json$/) do |method, end_point,
   @last_json = @http_response.body
 end
 
-When (/^I send a (GET) request to (.*?)$/) do |method, end_point|
+When (/^I send a (GET|DELETE) request to "(.*?)"$/) do |method, end_point|
   http_request = Rest_service.get_request(method, end_point)
   @http_response = Rest_service.execute_request(@http_connection, http_request)
   @last_json = @http_response.body
