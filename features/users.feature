@@ -48,6 +48,7 @@ Then the HTTP status code should be 200
         }
       """
 
+
 Scenario: Validates create user with invalid email
 When I send a POST request to "/user.json" with json
   """
@@ -76,19 +77,19 @@ Then the HTTP status code should be 200
     And JSON should be equal to
       """
       {
-        "Id": 588382,
-        "Email": "test.user.todoly@gmail.com",
+        "Id": 588123,
+        "Email": "silvia.valencia@jalasoft.com",
         "Password": null,
-        "FullName": "Test User",
+        "FullName": "Silvia Valencia",
         "TimeZone": 0,
         "IsProUser": false,
-        "DefaultProjectId": 3647032,
+        "DefaultProjectId": 3644751,
         "AddItemMoreExpanded": false,
         "EditDueDateMoreExpanded": false,
         "ListSortType": 0,
         "FirstDayOfWeek": 0,
         "NewTaskDueDate": -1,
-        "TimeZoneId": "Pacific Standard Time"
+        "TimeZoneId": "Atlantic Standard Time"
       }
       """
 
