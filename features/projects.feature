@@ -12,6 +12,7 @@ Given I have set a connection to application
 #************************************************************
 # GET Scenarios
 #************************************************************
+@delete_project
 Scenario: Verify the project information can be retrieved (GET)
 Given I send a POST request to "/projects.json" with json
   """
@@ -34,6 +35,7 @@ Then the HTTP status code should be 200
 #************************************************************
 # POST Scenarios
 #************************************************************
+@delete_project
 Scenario: Verify create project with valid name (POST)
 Given I send a POST request to "/projects.json" with json
   """
@@ -51,7 +53,7 @@ Then the HTTP status code should be 200
     And the JSON response at "Collapsed" should be false
     And the JSON response at "Children" should be []
 
-
+@delete_project
 Scenario: Verify create project with empty name (POST Negative)
 Given I send a POST request to "/projects.json" with json
   """
@@ -72,6 +74,7 @@ Then the HTTP status code should be 200
 #************************************************************
 # PUT Scenarios
 #************************************************************
+@delete_project
 Scenario: Verify update project with valid name (PUT)
 Given I send a POST request to "/projects.json" with json
   """
@@ -95,7 +98,7 @@ Then the HTTP status code should be 200
     And the JSON response at "Collapsed" should be false
 
 
-
+@delete_project
 Scenario: Verify update project with empty name (PUT negative)
 Given I send a POST request to "/projects.json" with json
   """
@@ -127,6 +130,7 @@ Then the HTTP status code should be 200
 #************************************************************
 # DELETE Scenarios
 #************************************************************
+@delete_project
 Scenario: Verify delete project (DELETE)
 Given I send a POST request to "/projects.json" with json
   """
@@ -135,6 +139,7 @@ Given I send a POST request to "/projects.json" with json
         "Icon": 2
     }
   """
+When I send a DELETE request to "/projects/" in json format
 Then the HTTP status code should be 200
     And the JSON response at "Content" should be "DELETE Test"
     And the JSON response at "ItemsCount" should be 0
@@ -145,6 +150,7 @@ Then the HTTP status code should be 200
     And the JSON response at "Children" should be []  
 
 
+@delete_project
 Scenario: Verify delete project (DELETE)
 Given I send a POST request to "/projects.json" with json
   """
@@ -153,6 +159,7 @@ Given I send a POST request to "/projects.json" with json
         "Icon": 2
     }
   """
+When I send a DELETE request to "/projects/" in json format  
 Then the HTTP status code should be 200
     And the JSON response at "Content" should be "DELETE Test"
     And the JSON response at "ItemsCount" should be 0

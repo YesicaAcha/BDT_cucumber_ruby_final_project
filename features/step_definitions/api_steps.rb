@@ -38,7 +38,6 @@ When (/^I send a (GET|DELETE) request to "(.*?)" in json format$/) do |method, e
   @last_json = @http_response.body
 end
 
-
 Then(/^the HTTP status code should be (\d+)$/) do |http_code|
   expect(@http_response.code).to eql(http_code)
 end
